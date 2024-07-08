@@ -34,7 +34,7 @@ def combine_features(row):
 
 df["combine_features"] = df.apply(combine_features, axis=1) #each row not columns
 
-print(df['combine_features'].head())
+#print(df['combine_features'].head())
 
 ##Step 4: Create count matrix from this new combined column
 
@@ -61,10 +61,17 @@ movie_user_likes = "Avatar" #taken form the user
 movie_index = get_index_from_title(movie_user_likes)
 
 
-#enumerate
+#enumerate = > gets tuple on index of list and value
 similar_movies = list(enumerate(cosine_sim[movie_index]))
 
 ## Step 7: Get a list of similar movies in descending order of similarity score
-
+sorted_similar_movies = sorted(similar_movies, key = lambda x:x[1], reverse=True) #sord by x[1], descending
 
 ## Step 8: Print titles of first 50 movies
+
+i = 0
+for movie in sorted_similar_movies:
+	print(get_title_from_index(movie[0]))
+	i += 1
+	if i == 50:
+		break
