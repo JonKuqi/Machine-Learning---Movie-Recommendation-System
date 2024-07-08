@@ -69,9 +69,11 @@ sorted_similar_movies = sorted(similar_movies, key = lambda x:x[1], reverse=True
 
 ## Step 8: Print titles of first 50 movies
 
-i = 0
+i = 1
+print("Movies: ")
 for movie in sorted_similar_movies:
-	print(get_title_from_index(movie[0]))
+	print(i, sep="", end = "")
+	print(".",get_title_from_index(movie[0]))
 	i += 1
-	if i == 50:
+	if i > 50:
 		break
